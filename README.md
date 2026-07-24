@@ -69,16 +69,3 @@ MovieLens **ml-latest-small** (`data/`): ~100,000 ratings (0.5–5.0 stars) by 6
 
 **Why is this personalized beyond popularity?** SVD outperforms the popularity baseline on every metric while producing a *different list per user*, driven by that user's own rating history. The demo user's Top-10s (see `run_experiment.py` output) contain animation and character-driven films matching their profile, not the global blockbusters the baseline returns.
 
-**Honest limitations (great for the exam Q&A):**
-- Pure content-based scores low on accuracy metrics: it recommends *similar* movies, but held-out test items are often outside the user's dominant genre — a known weakness (over-specialization / filter bubble). Its value is interpretability and item cold-start, which is why we hybridize.
-- Popularity is a surprisingly strong baseline on MovieLens (popular movies really are widely liked) — beating it at all is meaningful.
-- The hybrid at α=0.6 sits between its parents; tuning α on a validation split (or a learned blend) is the natural next step.
-- Offline metrics only measure "did we predict what they happened to watch next", not true recommendation quality; an A/B test would be needed in production.
-
-## Suggested member split (3–5 people)
-
-1. Data + preprocessing + demo-user story (`data.py`)
-2. Content-based method + interpretation of recommendations (`content_based.py`)
-3. Collaborative filtering (`collaborative.py`)
-4. Hybrid + evaluation + baseline comparison (`hybrid.py`, `evaluate.py`, `baseline.py`)
-5. Slides, demo walkthrough, report
